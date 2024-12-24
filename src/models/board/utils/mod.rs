@@ -16,7 +16,7 @@ pub fn group_by_columns(board: &Board) -> HashMap<u8, Vec<(u8, u8, char)>> {
     let mut grouped_cells: HashMap<u8, Vec<(u8, u8, char)>> = HashMap::new();
     for cell in &board.cells {
         grouped_cells
-            .entry(cell.0)
+            .entry(cell.1)
             .or_insert_with(Vec::new)
             .push((cell.0, cell.1, cell.2));
     }

@@ -1,6 +1,15 @@
 use crate::models::board::Board;
 use crate::models::player::Player;
 
+pub fn display_init_game() -> () {
+    println!("Choisissez votre mode de jeu ou quittez (q) : \n");
+    println!("1.\tJoueur (X) contre joueur (O).");
+    println!("2.\tJoueur (O) contre joueur (X).");
+    println!("3.\tJoueur (X) contre IA (O).");
+    println!("4.\tJoueur (O) contre IA (X).");
+    println!("5.\tIA (X) contre IA (O).\n");
+}
+
 pub fn display_line(separator: char) -> () {
     let width = term_size::dimensions().map(|(w, _)| w).unwrap_or(80);
     let line: String = std::iter::repeat(separator).take(width).collect();
@@ -57,4 +66,25 @@ pub fn display_won(player: &Player) -> () {
 
 pub fn display_clear() -> () {
     clearscreen::clear().expect("Failed to clear screen");
+}
+
+pub fn display_errors_handled(reason: &str) -> () {
+    match reason {
+        "ProvidedEmptyInput" => println!("The user provide an empty input."),
+        "Quit" => println!("User quit the program."),
+        "InvalidCoordinates" => println!("Coordinates are not valid."),
+        "CellNotAvailable" => println!("The target cell has already been played."),
+        "ParseStringError" => {
+            println!("The data provided by the user cannot be parsed into coordinates.")
+        }
+        _ => println!("An error occured."),
+    };
+}
+
+pub fn display_quit() -> () {
+    println!("User quit the program.");
+}
+
+pub fn display_invalid() -> () {
+    println!("Invalid input, quit program.");
 }

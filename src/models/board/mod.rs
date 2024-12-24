@@ -31,7 +31,7 @@ impl Board {
     pub fn get_empty_cells(&self) -> Vec<(u8, u8, char)> {
         self.cells
             .iter()
-            .filter(|cell| cell.2 != 'X' || cell.2 != 'O')
+            .filter(|cell| cell.2 == EMPTY_CHAR)
             .map(|cell| *cell)
             .collect()
     }
