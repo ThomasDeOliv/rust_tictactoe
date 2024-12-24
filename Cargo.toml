@@ -1,0 +1,8 @@
+[package]
+name = "rust_tictactoe"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clearscreen = "3.0.0"
+term_size = "0.3.2"
